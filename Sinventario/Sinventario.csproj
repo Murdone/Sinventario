@@ -13,11 +13,17 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SInventario.AccesoDatos\SInventario.AccesoDatos.csproj" />
-    <ProjectReference Include="..\SInventario.Modelos\SInventario.Modelos.csproj" />
+    <ProjectReference Include="..\SInventario.Modelo\SInventario.Modelo.csproj" />
+    <ProjectReference Include="..\SInventario.Utilidades\SInventario.Utilidades.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Controllers\" />
   </ItemGroup>
 
 </Project>

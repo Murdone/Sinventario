@@ -3,8 +3,9 @@ using Microsoft.Extensions.Logging;
 using Sinventario.Modelos.ViewModels;
 using System.Diagnostics;
 
-namespace Sinventario.Controllers
+namespace Sinventario.Areas.Inventario.Controllers
 {
+    [Area("Inventario")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

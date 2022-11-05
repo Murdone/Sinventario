@@ -14,4 +14,9 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SInventario.Modelo\SInventario.Modelo.csproj" />
+    <ProjectReference Include="..\SInventario.Utilidades\SInventario.Utilidades.csproj" />
+  </ItemGroup>
+
 </Project>
