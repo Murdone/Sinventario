@@ -7,18 +7,28 @@ using System.Threading.Tasks;
 
 namespace SInventario.AccesoDatos.Repositorio.IRepositorio
 {
-    public internal interface IRepositorio<T> where T : class
+    public interface IRepositorio<T> where T : class
     {
         T Obtener(int id);
-        IEnumerable<T> ObtenerTodos(Expression<Func<T, bool>> filter = null,
-                                    Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-                                    string incluirPropiedades = null);
-        T ObtenerPrimero(Expression<Func<T, bool>> filter = null,
-                               string incluirPropiedades = null);
+
+        IEnumerable<T> ObtenerTodos(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string incluirPropiedades = null
+            );
+
+        T ObtenerPrimero(
+            Expression<Func<T, bool>> filter = null,
+            string incluirPropiedades = null
+            );
+
         void Agregar(T entidad);
-        void Remover(int Id);
+
+        void Remover(int id);
+
         void Remover(T entidad);
-        void Remover(IEnumerable<T> entidad);
+
+        void RemoverRango(IEnumerable<T> entidad);
 
     }
 }
