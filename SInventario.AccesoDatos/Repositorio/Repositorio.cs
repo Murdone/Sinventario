@@ -11,72 +11,89 @@ namespace SInventario.AccesoDatos.Repositorio
     {
         private readonly ApplicationDbContext _db;
         internal DbSet<T> dbSet;
-        public Repositorio(ApplicationDbContext db, DbSet<T> dbSet)
+
+        public Repositorio(ApplicationDbContext db)
         {
             _db = db;
             this.dbSet = _db.Set<T>();
         }
 
+
         public void Agregar(T entidad)
         {
-            dbSet.Add(entidad); // insert  into table
+            dbSet.Add(entidad);      // insert into  Table
         }
+
 
         public T Obtener(int id)
         {
-            return dbSet.Find(id); // select * frtom
+            return dbSet.Find(id);    // select * from 
         }
 
         public T ObtenerPrimero(Expression<Func<T, bool>> filter = null, string incluirPropiedades = null)
         {
+
             IQueryable<T> query = dbSet;
+
             if (filter != null)
             {
-                query = query.Where(filter); //select * from ...
+                query = query.Where(filter);   // select * from where ...
             }
+
             if (incluirPropiedades != null)
             {
-                foreach (var incluirProp in incluirPropiedades.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) // split cuando encuentre una coma que se un objeto diferente
+                foreach (var incluirProp in incluirPropiedades.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(incluirProp);
                 }
             }
-          
+
             return query.FirstOrDefault();
+
         }
+
+
 
         public IEnumerable<T> ObtenerTodos(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string incluirPropiedades = null)
         {
             IQueryable<T> query = dbSet;
-            if (filter != null) {
-             query = query.Where(filter); //select * from ...
-            }
-            if (incluirPropiedades != null) 
+
+            if (filter != null)
             {
-                 foreach(var incluirProp in incluirPropiedades.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) // split cuando encuentre una coma que se un objeto diferente
+                query = query.Where(filter);   // select * from where ...
+            }
+
+            if (incluirPropiedades != null)
+            {
+                foreach (var incluirProp in incluirPropiedades.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                  query = query.Include(incluirProp);
+                    query = query.Include(incluirProp);
                 }
             }
+
             if (orderBy != null)
             {
                 return orderBy(query).ToList();
             }
+
             return query.ToList();
+
         }
 
-        public void Remover(int Id)
+
+
+        public void Remover(int id)
         {
-            T enridad = dbSet.Find(Id);
-            Remover(enridad);
+            T entidad = dbSet.Find(id);
+            Remover(entidad);
         }
 
         public void Remover(T entidad)
         {
-            dbSet.Remove(entidad); //delete al registro lo mas parece delete from
+            dbSet.Remove(entidad);    // delete from 
         }
 
-        public void Remover(IEnumerable<T> entidad)
+        public void RemoverRango(IEnumerable<T> entidad)
         {
             dbSet.RemoveRange(entidad);
         }
