@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SInventario.AccesoDatos;
+using SInventario.AccesoDatos.Repositorio.IRepositorio;
+using SInventario.AccesoDatos.Repositorio;
 
 namespace Sinventario
 {
@@ -25,9 +27,9 @@ namespace Sinventario
                 options.UseSqlServer(
                     Configuration.GetConnectionString("Connection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<IUnidadTrabajo, UnidadTrabajo>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
         }
