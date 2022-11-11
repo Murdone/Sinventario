@@ -24,7 +24,6 @@ namespace SInventario.AccesoDatos.Repositorio
             dbSet.Add(entidad);      // insert into  Table
         }
 
-
         public T Obtener(int id)
         {
             return dbSet.Find(id);    // select * from 
@@ -52,8 +51,6 @@ namespace SInventario.AccesoDatos.Repositorio
 
         }
 
-
-
         public IEnumerable<T> ObtenerTodos(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string incluirPropiedades = null)
         {
             IQueryable<T> query = dbSet;
@@ -79,8 +76,6 @@ namespace SInventario.AccesoDatos.Repositorio
             return query.ToList();
 
         }
-
-
 
         public void Remover(int id)
         {
