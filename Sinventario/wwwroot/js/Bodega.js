@@ -46,7 +46,7 @@ function loadDataTable() {
 function Delete(url) {
 
     swal({
-        title: "Esta Seguro que quiere Eliminar la Bodega?",
+        title: "Esta Seguro de que quiere Eliminar la Bodega?",
         text: "Este Registro no se podra recuperar",
         icon: "warning",
         buttons: true,
