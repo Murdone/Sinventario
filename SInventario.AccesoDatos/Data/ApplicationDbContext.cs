@@ -12,5 +12,7 @@ namespace SInventario.AccesoDatos
         }
 
         public DbSet<Bodega> Bodegas { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Marca> marcas { get; set; }
     }
 }

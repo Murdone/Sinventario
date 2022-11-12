@@ -12,15 +12,14 @@ namespace SInventario.AccesoDatos.Repositorio
         {
             _db = db;
         }
-
         public void Actualizar(Bodega bodega)
         {
-            var bodegaDb = _db.Bodegas.FirstOrDefault(b => b.Id == bodega.Id);
-            if (bodegaDb != null)
+            var BodegasDb = _db.Bodegas.FirstOrDefault(b => b.Id == bodega.Id);
+            if (BodegasDb != null)
             {
-                bodegaDb.Nombre = bodega.Nombre;
-                bodegaDb.Descripcion = bodega.Descripcion;
-                bodegaDb.Estado = bodega.Estado;
+                BodegasDb.Nombre = bodega.Nombre;
+                BodegasDb.Descripcion = bodega.Descripcion;
+                BodegasDb.Estado = bodega.Estado;
 
 
             }
