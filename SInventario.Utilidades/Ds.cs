@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SInventario.Utilidades
+﻿namespace SInventario.Utilidades
 {
     public static class Ds
     {
-
+        public const string Role_Cliente = "Cliente";
+        public const string Role_Admin = "Admin";
+        public const string Role_Inventario = "Inventario";
+        public const string Role_Ventas = "Ventas";
     }
 }

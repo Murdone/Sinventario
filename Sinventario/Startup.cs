@@ -1,13 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SInventario.AccesoDatos;
-using SInventario.AccesoDatos.Repositorio.IRepositorio;
 using SInventario.AccesoDatos.Repositorio;
+using SInventario.AccesoDatos.Repositorio.IRepositorio;
+using SInventario.Utilidades;
 
 namespace Sinventario
 {
@@ -27,8 +29,9 @@ namespace Sinventario
                 options.UseSqlServer(
                     Configuration.GetConnectionString("Connection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddSingleton<IEmailSender, EmailSender>();
             services.AddScoped<IUnidadTrabajo, UnidadTrabajo>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
