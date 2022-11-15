@@ -12,7 +12,7 @@ function loadDataTable() {
         "columns": [
             { "data": "userName", "width": "10%" },
             { "data": "nombres", "width": "10%" },
-            { "data": "apellido", "width": "10%" },
+            { "data": "apellidos", "width": "10%" },
             { "data": "email", "width": "15%" },
             { "data": "phoneNumber", "width": "10%" },
             { "data": "role", "width": "15%" },

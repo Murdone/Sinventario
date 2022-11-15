@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SInventario.AccesoDatos;
+using SInventario.Utilidades;
 using System;
+using System.Data;
 using System.Linq;
 
 namespace Sinventario.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = Ds.Role_Admin)]
     public class UsuarioController : Controller
     {
         private readonly ApplicationDbContext _db;
